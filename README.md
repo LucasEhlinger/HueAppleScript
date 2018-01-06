@@ -1,10 +1,16 @@
 # HueAppleScript
 Control your Philips Hue with Applescript
 
-## pp.scpt
+## Deploy
+
+* Open HueScript.applescript with Apple Script Editor
+* Edit your BridgeAdress and APIKEY
+* File > Export ---> script -> know you have the executable "HueScript.scpt"
+* You can edite and use the Exemple
+
+## HueScript.applescript
 
 Something like a class to control the hues with somes Methods :
-
 
 ### Gets
 
