@@ -60,7 +60,67 @@ return the state : true if the hue is on and false if not.
 
 #### Change
 
+Take the Light number
 Turn on non-actives lights and turn off actives lights.
+
+```
+on Change(x)
+	set BridgeAddress to GetBridge()
+	set apiKey to GetApi()
+	set Etat to State(x, BridgeAddress, apiKey)
+	
+	if Etat = "true" then
+		turnOff(x)
+	else
+		turnOn(x)
+	end if
+end Change
+```
+
+#### RandomColor
+
+Take the Light number
+Active the selected light with a completely random color.
+
+```
+on RandomColor(x)
+	set BridgeAddress to GetBridge()
+	set apiKey to GetApi()
+	
+	set hue to (random number from 0 to 65280) as text
+	set sat to (random number from 0 to 254) as text
+	
+	do shell script "curl --request PUT --data " & "'{\"on\": true,\"hue\": " & hue & ", \"sat\": " & sat & ",\"bri\": 254}'" & " http://" & BridgeAddress & "/api/" & apiKey & "/lights/" & x & "/state/"
+end RandomColor
+```
+
+
+#### turnOff
+Take the Light number
+Turn Off the selected light
+
+```
+on turnOff(x)
+	set BridgeAddress to GetBridge()
+	set apiKey to GetApi()
+	set action to GetOff()
+	
+	do shell script "curl --request PUT --data " & action & " http://" & BridgeAddress & "/api/" & apiKey & "/lights/" & x & "/state/"
+end turnOff
+```
+
+#### turnOn
+Take the Light number
+Turn On the selected light
+```
+on turnOn(x)
+	set BridgeAddress to GetBridge()
+	set apiKey to GetApi()
+	set action to GetOff()
+	
+	do shell script "curl --request PUT --data " & action & " http://" & BridgeAddress & "/api/" & apiKey & "/lights/" & x & "/state/"
+end turnOn
+```
 
 
 ## Deployment
