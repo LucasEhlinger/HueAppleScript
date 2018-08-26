@@ -133,10 +133,6 @@ end turnOn
 
 I use "Spark" to link these scripts to keybord shortcuts.
 
-## Issue
-Actually Git, github and ... lot of things can't read AppleScript files.
-
-
 ## Authors
 
 * **Lucas Ehlinger** - *Initial work*
